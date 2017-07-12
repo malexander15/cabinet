@@ -3,7 +3,7 @@ class DocsController < ApplicationController
   before_action :find_doc, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@docs = Doc.where(user_id: current_user)
+    @docs = current_user.docs
   end
 
   def show
@@ -50,5 +50,4 @@ class DocsController < ApplicationController
     def doc_params
     	params.require(:doc).permit(:title, :content)
     end
-
 end
